@@ -173,9 +173,3 @@ The admin uses Jazzmin configuration from `MRMS/settings.py` for improved visual
 - Add automated tests for auth, request lifecycle, and role access.
 - Move secrets and runtime config to `.env`-based settings.
 - Add deployment setup (Gunicorn/Uvicorn + Nginx + PostgreSQL).
-
----
-If you want, I can also generate:
-- a shorter portfolio-style README version,
-- API/endpoint documentation,
-- and a deployment-ready production checklist.
