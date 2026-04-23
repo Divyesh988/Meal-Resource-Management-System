@@ -1,0 +1,83 @@
+{% extends 'User_base.html' %}
+
+{% block title %} view-all_reqs {% endblock title %}
+
+{% block content %}
+
+  <div class="header bg-primary pb-6 pt-0">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-2">
+          <div class="col-lg-6 col-7">
+            <h1 class="h2 text-white font-weight-bold mb-0">Collection Requests</h1>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block mt-2">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark bg-transparent p-0">
+                <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item active" aria-current="page">Requests</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- Card header -->
+          <!-- Light table -->
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="sort" data-sort="name">Detailed Description</th>
+                  <th scope="col" class="sort" data-sort="budget">Address</th>
+                  <th scope="col" class="sort" data-sort="status">Area</th>
+                  <th scope="col" class="sort" data-sort="status">Status</th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                {% for all_req in all_reqs %}
+                  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        <div class="media-body">
+                          <a href="{% url 'User_view_fcr' request.user.email  all_req.complaint_id %}">
+                            <span class="name mb-0 text-sm">{{ all_req.detailed_description|slice:":30" }}{% if all_req.detailed_description|length > 30 %}...{% endif %}</span>
+                          </a>
+                        </div>
+                      </div>
+                    </th>
+                    <td class="budget">
+                      {{ all_req.complainant_address|slice:":30" }}{% if all_req.complainant_address|length > 30 %}...{% endif %}
+                    </td>
+                    <td class="budget">
+                      {{ all_req.area }}
+                    </td>
+                    <td>
+                      <span class="badge badge-dot mr-4">
+                        <i class="{% if all_req.status == 'Pending' %}bg-warning{% else %}bg-success{% endif %}"></i>
+                        <span class="status">{{ all_req.status }}</span>
+                      </span>
+                    </td>
+                  </tr>
+                {% endfor %}
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+
+  </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,78 @@
+{% extends 'GC_base.html' %}
+
+{% block title %} Feedbacks {% endblock title %}
+
+{% block content %}
+
+  <div class="header bg-primary pb-6 pt-0">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-2">
+          <div class="col-lg-6 col-7">
+            <h1 class="h2 text-white font-weight-bold mb-0">Feedback</h1>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block mt-3">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark bg-transparent p-0">
+                <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item active" aria-current="page">Feedback</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Page content -->
+<div class="container-fluid mt--6">
+  <div class="row justify-content-center">
+
+    <div class="col-xl-10 order-xl-1">
+      <div class="card">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <span class="text-uppercase text-muted ls-1 mb-1">Share your thoughts</span>
+              <h5 class="h3 mb-0">Help us improve</h5>
+            </div>
+          </div>
+        </div>
+        <!-- FeedBack -->
+        <div class="pl-lg-4">
+          <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label class="form-control-label">Give Feedback</label>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">Title</label>
+                    <input type="text" id="input-first-name" class="form-control" name="title"
+                      placeholder="Appreciate or Complain according to work">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="detailed_description">Detailed Description</label>
+                    <textarea rows="4" class="form-control" name="detailed_description" placeholder="Describe in detail "></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 text-right">
+                <button href="#!" class="btn btn-sm btn-primary">Send</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

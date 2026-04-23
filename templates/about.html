@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | MRMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/landing_page/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
+    <header class="glass-header">
+        <div class="logo">M.R.<span class="accent">M.S.</span></div>
+        <div class="hamburger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/" class="active">About</a></li>
+                <li><a href="{% url 'login' %}">Log-in</a></li>
+                <li><a href="{% url 'register' %}" class="btn-outline">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding-top: 100px;">
+        <section class="hero-section" style="min-height: 60vh;">
+            <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div class="badge-pill fade-up">👋 Meet The Team</div>
+                <h1 class="fade-up delay-1">Our <span class="gradient-text">Mission.</span></h1>
+                <p class="fade-up delay-2" style="margin: 0 auto 40px;">Connecting surplus food with those who need it most. Together, we can eradicate hunger and promote global sustainability.</p>
+            </div>
+        </section>
+
+        <section class="section-padding" style="margin-top: -150px; position: relative; z-index: 10;">
+            <div class="glass-card fade-up delay-3" style="padding: 60px; text-align: center; max-width: 900px; margin: 0 auto;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Who We Are</h2>
+                <p style="color: var(--text-muted); font-size: 1.2rem; line-height: 1.8;">
+                    We are a team of passionate individuals committed to addressing the issue of food waste in India. Our goal is to create a seamless ecosystem that connects food donors with charities and NGOs, while significantly reducing the environmental impact of food waste.
+                </p>
+            </div>
+        </section>
+
+        <section class="how-it-works section-padding">
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="cards-grid">
+                <div class="feature-card glass-card hover-lift">
+                    <div class="icon-wrapper" style="color: var(--accent);"><i class="fas fa-heart"></i></div>
+                    <h3>Compassion</h3>
+                    <p>Every donation is a step towards a more compassionate world where no one goes hungry.</p>
+                </div>
+                <div class="feature-card glass-card hover-lift">
+                    <div class="icon-wrapper"><i class="fas fa-leaf"></i></div>
+                    <h3>Sustainability</h3>
+                    <p>Reducing waste isn't just about hunger; it's about protecting our planet for future generations.</p>
+                </div>
+                <div class="feature-card glass-card hover-lift">
+                    <div class="icon-wrapper" style="color: #4facfe;"><i class="fas fa-users"></i></div>
+                    <h3>Community</h3>
+                    <p>We believe in the power of collective action. When we work together, we achieve more.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <h2 class="section-title">Where We Project</h2>
+            <div class="glass-card" style="padding: 20px; overflow: hidden; max-width: 1000px; margin: 0 auto; border-radius: 24px;">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29378.1454925622!2d72.4784890264934!3d23.013923217479856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b5a986f7dd7%3A0x2b9345c3f13c7158!2sNew%20L%20J%20Institute%20of%20Engineering%20%26%20Technology!5e0!3m2!1sen!2sin!4v1710841013380!5m2!1sen!2sin"
+                    width="100%" height="450" style="border:0; border-radius: 16px;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer class="modern-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>M.R.<span class="accent">M.S.</span></h2>
+                <p>The Meal Resource Management System is a futuristic approach to resolving urban food waste logistics.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="about/">About Us</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-envelope"></i> contact@mrms.org</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fas fa-map-marker-alt"></i> Ahmedabad, Gujarat</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Meal Resource Management System. Crafted with purpose.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navBar = document.querySelector(".nav-bar");
+        const header = document.querySelector('.glass-header');
+
+        hamburger.onclick = function () {
+            navBar.classList.toggle("active");
+            hamburger.classList.toggle("active");
+        }
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

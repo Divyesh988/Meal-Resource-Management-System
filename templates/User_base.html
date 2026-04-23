@@ -1,0 +1,222 @@
+<!--
+=========================================================
+* Argon Dashboard - v1.2.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+
+
+* Copyright  Creative Tim (http://www.creative-tim.com)
+* Coded by www.creative-tim.com
+
+
+
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="canonical" href="https://appseed.us/admin-dashboards/django-dashboard-argon">
+  
+  <title>
+    Django Argon Dashboard - {% block title %} Open-Source Admin Panel {% endblock %} | AppSeed
+  </title>
+
+  <!-- Favicon - loaded as static -->
+  <link rel="icon" href="/static/assets/img/brand/favicon.png" type="image/png">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="/static/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <!-- Page plugins -->
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="/static/assets/css/argon.css?v=1.2.0" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #008080;
+      --primary-dark: #006666;
+      --secondary: #FF6B6B;
+    }
+    body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+      font-family: 'Poppins', sans-serif !important;
+    }
+    .bg-primary {
+      background-color: #008080 !important;
+    }
+    .bg-gradient-primary {
+      background: linear-gradient(87deg, #008080 0, #006666 100%) !important;
+    }
+    .btn-primary {
+      background-color: #008080 !important;
+      border-color: #008080 !important;
+      box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    }
+    .btn-primary:hover {
+      background-color: #006666 !important;
+      border-color: #006666 !important;
+    }
+    .text-primary {
+      color: #008080 !important;
+    }
+    .card {
+      border-radius: 1.25rem !important;
+      border: none !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .navbar-vertical.navbar-light .navbar-nav .nav-link {
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.6);
+    }
+    .navbar-vertical.navbar-light .navbar-nav .nav-link:hover, 
+    .navbar-vertical.navbar-light .navbar-nav .nav-link.active {
+        color: var(--primary);
+        background: rgba(0, 128, 128, 0.05);
+        border-radius: 10px;
+    }
+    .navbar-vertical.navbar-light .navbar-nav .nav-link > i {
+        color: var(--primary) !important;
+    }
+    .breadcrumb-dark .breadcrumb-item + .breadcrumb-item::before {
+        color: rgba(255, 255, 255, 0.6) !important;
+    }
+    .breadcrumb-dark .breadcrumb-item a {
+        color: #fff !important;
+    }
+    .breadcrumb-dark .breadcrumb-item.active {
+        color: rgba(255, 255, 255, 0.8) !important;
+    }
+    .breadcrumb-dark .breadcrumb-item a i {
+        color: #fff !important;
+    }
+    /* Global spacing fixes */
+    .header {
+        padding-top: 0 !important;
+        min-height: 120px !important; /* Force a shorter header */
+    }
+    .main-content {
+        padding-top: 0 !important;
+    }
+    /* Top-right profile alignment */
+    .navbar-nav .nav-link .media-body span {
+        vertical-align: middle !important;
+        margin-left: 0.5rem !important;
+    }
+    .avatar img {
+        border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    /* Safe Glassmorphism Enhancements */
+    body {
+        background-color: #f4f9f9 !important;
+        position: relative;
+        overflow-x: hidden;
+    }
+    
+    /* Dynamic Dashboard Blobs - Z-index fixed so it doesn't break clicks */
+    .bg-shape {
+        position: fixed;
+        filter: blur(100px);
+        z-index: -10;
+        border-radius: 50%;
+        animation: drift 30s infinite alternate cubic-bezier(0.5, 0, 0.5, 1);
+        opacity: 0.6;
+    }
+    .shape-1 {
+        top: -10%; left: -10%; width: 50vw; height: 50vw;
+        background: rgba(0, 128, 128, 0.2);
+    }
+    .shape-2 {
+        bottom: 10%; right: -10%; width: 40vw; height: 40vw;
+        background: rgba(255, 107, 107, 0.15);
+        animation-delay: -15s;
+    }
+    @keyframes drift {
+        0% { transform: translate(0, 0) scale(1); }
+        100% { transform: translate(8%, 8%) scale(1.1); }
+    }
+
+    /* Safe Frosted Sidebar - No margin changes to preserve mobile */
+    .navbar-vertical {
+        background: rgba(255, 255, 255, 0.75) !important;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-right: 1px solid rgba(255, 255, 255, 0.4) !important;
+    }
+
+    /* Premium Glass Navbar Top */
+    .navbar-top.bg-primary {
+        background: linear-gradient(135deg, rgba(0, 128, 128, 0.85), rgba(0, 102, 102, 0.9)) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+        position: relative !important;
+        z-index: 1050 !important;
+    }
+
+    /* Header background - No z-index or blur so cards can float above it via mt--6 */
+    .header.bg-primary {
+        background: linear-gradient(135deg, rgba(0, 128, 128, 0.95), rgba(0, 102, 102, 1)) !important;
+    }
+
+    /* High-contrast Frosted Cards */
+    .card {
+        background: rgba(255, 255, 255, 0.85) !important;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.6) !important;
+        border-radius: 1.25rem !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-top: 1rem !important;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 128, 128, 0.1) !important;
+    }
+    
+    /* Clean underline removals */
+    a {
+        text-decoration: none !important;
+    }
+  </style>
+
+  <!-- Specific CSS goes HERE -->
+  {% block stylesheets %}{% endblock stylesheets %}
+
+</head>
+
+<body class="">
+
+  <!-- Background Animated Orbs -->
+  <div class="bg-shape shape-1"></div>
+  <div class="bg-shape shape-2"></div>
+
+  {% include "user_side_nav.html" %}
+
+  <div class="main-content" id="panel">
+
+    {% include "navigation.html" %}
+
+    {% block content %}{% endblock content %}
+
+  </div>
+
+  {% include "scripts.html" %}
+
+  <!-- Specific JS goes HERE --> 
+  {% block javascripts %}{% endblock javascripts %}
+
+  <script src="/static/assets/js/argon.js?v=1.2.0"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom-0 shadow-none py-2 px-lg-2">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Search form -->
+      <form class="navbar-search navbar-search-light form-inline mr-md-3 ml-lg-auto" id="navbar-search-main">
+        <div class="form-group mb-0">
+          <div class="input-group input-group-alternative input-group-merge bg-white rounded-pill shadow-sm border border-soft">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-search text-primary"></i></span>
+            </div>
+            <input class="form-control" placeholder="Search operations..." type="text" style="color: #333 !important;">
+          </div>
+        </div>
+        <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </form>
+      
+      <!-- Navbar links -->
+      <ul class="navbar-nav align-items-center ml-md-auto">
+        <li class="nav-item d-xl-none">
+          <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+            <div class="sidenav-toggler-inner">
+              <i class="sidenav-toggler-line"></i>
+              <i class="sidenav-toggler-line"></i>
+              <i class="sidenav-toggler-line"></i>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav align-items-center ml-auto ml-md-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="media align-items-center">
+              <span class="avatar avatar-sm rounded-circle border border-white">
+                <img alt="Image placeholder" src="{{ MEDIA_URL }}{{ user_profile.profile_image.url }}">
+              </span>
+              <div class="media-body ml-3 d-none d-lg-block">
+                <span class="mb-0 text-sm font-weight-bold text-white">{{ user.first_name }}</span>
+              </div>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right shadow-lg border-0 rounded-lg">
+            <div class="dropdown-header noti-title">
+              <h6 class="text-overflow m-0 text-muted">Welcome!</h6>
+            </div>
+            <a href="{% if user.role == 'FOOD_COLLECTOR' %}{% url 'FC_profile' request.user.email %}{% else %}{% url 'User_profile' request.user.email %}{% endif %}" class="dropdown-item">
+              <i class="ni ni-single-02 text-primary"></i>
+              <span>My Profile</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="{% url 'user_logout' %}" class="dropdown-item">
+              <i class="ni ni-user-run text-danger"></i>
+              <span class="text-danger">Logout</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  let a = "{{ MEDIA_URL }}{{ request.user_profile.profile_image.url}}"
+  console.log(a)
+</script>

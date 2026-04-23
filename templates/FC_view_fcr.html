@@ -1,0 +1,155 @@
+{% extends 'GC_base.html' %}
+
+{% block title %} Create-FC-Request s {% endblock title %}
+
+{% block content %}
+
+  <div class="header bg-primary pb-6 pt-0">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-2">
+          <div class="col-lg-6 col-7">
+            <h1 class="h2 text-white font-weight-bold mb-0">Request Details</h1>
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block mt-2">
+              <ol class="breadcrumb breadcrumb-links breadcrumb-dark bg-transparent p-0">
+                <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item"><a href="{% url 'FC_view_fcrs' request.user.email %}">Requests</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Details</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Page content -->
+<div class="container-fluid mt--6">
+  <div class="row justify-content-center">
+
+    <div class="col-xl-10 order-xl-1">
+            <div class="card">
+                <div class="card-header">
+                    
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h6 class="heading-small text-muted mb-4">User information</h6>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-email">Email address</label>
+                                        <input type="email" id="input-email" name="email" class="form-control" readonly
+                                            placeholder="{{all_reqs.complainant_email}}"
+                                            value="{{all_reqs.complainant_email}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-email">Name</label>
+                                        <input type="text" id="input-email" name="first_name" class="form-control"
+                                            readonly placeholder="{{all_reqs.complainant_name}}"
+                                            value="{{all_reqs.complainant_name}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-email">Contact Number</label>
+                                        <input type="number" id="input-email" name="phone_number" class="form-control"
+                                            readonly placeholder="{{all_reqs.complainant_contact_no}}"
+                                            value="{{all_reqs.complainant_contact_no}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+
+                        <!-- Address -->
+                        <h6 class="heading-small text-muted mb-4">information</h6>
+                        <div class="pl-lg-4">
+
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-address">Area</label>
+                                        <input type="text" id="input-email" name="area" class="form-control" readonly
+                                            placeholder="{{all_reqs.area}}" value="{{all_reqs.area}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-address">Type</label>
+                                        <input type="text" id="input-email" name="area" class="form-control" readonly
+                                            placeholder="{{all_reqs.type}}" value="{{all_reqs.type}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-address">Address</label>
+                                        <textarea rows="4" name="address" class="form-control" readonly
+                                            placeholder="{{all_reqs.complainant_address}}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-address">Detailed
+                                            Description</label>
+                                        <textarea rows="4" name="detailed_description" readonly class="form-control"
+                                            placeholder="{{all_reqs.detailed_description}}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="form-control-label" for="input-address">Food Image</label>                                <div class="d-flex align-items-start align-items-sm-center gap-4 mb-3">
+                                    <img src="{{ MEDIA_URL }}{{ all_reqs.food_image.url }}" class="d-block rounded"
+                                        height="100" width="100" id="uploadedAvatar" />
+                                    <div class="button-wrapper">
+                                        <a href="{{ MEDIA_URL }}{{ all_reqs.food_image.url }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-primary me-2 mb-4" tabindex="0">
+                                            <span class="d-none d-sm-block">Open Image in new tab</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4" />
+                        <!-- Description -->
+                        
+                        <input type="hidden" name="status" value="Completed">
+                        <input type="hidden" name="complaint_id" value="{{all_reqs.complaint_id}}">
+                        <input type="hidden" name="GC_id" value="{{user_profile.id}}">
+                        <input type="hidden" name="email" value="{{user.email}}">
+
+                        <div style="display: flex;  justify-content: center;">
+                            <a href="{% url 'FC_view_fcrs'  request.user.email %}" style="height: 40px; font-size: large; background: rgb(80, 150, 175);" class="btn btn-sm btn-info">Go back</a>
+                            {% if all_reqs.status == 'Pending' %}
+                            <button type="submit" style="height: 40px; font-size: large; " class="btn btn-sm btn-primary">Mark as Completed</button>
+                            {% endif %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}{% endblock javascripts %}

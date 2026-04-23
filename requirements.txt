@@ -1,0 +1,7 @@
+
+Django
+django-jazzmin
+pillow
+requests
+
+

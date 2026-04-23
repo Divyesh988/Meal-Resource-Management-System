@@ -1,0 +1,65 @@
+<!-- -----------------------------------
+
+its for the noramal user sider bar
+
+----------------------------------- -->
+
+<nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white border-right-0" id="sidenav-main">
+  <div class="scrollbar-inner">
+    <!-- Brand -->
+    <div class="sidenav-header d-flex align-items-center justify-content-between pr-3">
+      <a class="navbar-brand" href="/">
+        <div class="logo">M.R.<b style="color: #008080;">M.S.</b></div>
+      </a>
+      <div class="d-xl-none">
+        <button type="button" class="btn btn-sm btn-link text-dark p-0 sidenav-toggler" data-action="sidenav-unpin" data-target="#sidenav-main" aria-label="Close Sidebar">
+          <i class="fas fa-times fa-lg"></i>
+        </button>
+      </div>
+    </div>
+    <div class="navbar-inner">
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+        <!-- Nav items -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link {% if 'index' in request.path %}active{% endif %}" href="{% url 'index' %}?&user_email={{ request.user.email }}&user_role={{ request.user.role }}">
+              <i class="ni ni-tv-2"></i>
+              <span class="nav-link-text">Dashboard</span>
+            </a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link {% if 'User_profile' in request.path %}active{% endif %}" href="{% url 'User_profile' request.user.email %}">
+              <i class="ni ni-single-02"></i>
+              <span class="nav-link-text">Manage Profile</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if 'Create_food_collection_request' in request.path %}active{% endif %}" href="{% url 'Create_food_collection_request' request.user.email %}">
+              <i class="ni ni-fat-add"></i>
+              <span class="nav-link-text">Create Request</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if 'User_view_fcrs' in request.path %}active{% endif %}" href="{% url 'User_view_fcrs' request.user.email %}">
+              <i class="ni ni-single-copy-04"></i>
+              <span class="nav-link-text">View Status</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if 'feedbacks' in request.path %}active{% endif %}" href="{% url 'feedbacks_master_byUsers' request.user.email %}">
+              <i class="ni ni-satisfied"></i>
+              <span class="nav-link-text">Feedbacks</span>
+            </a>
+          </li>
+          <li class="nav-item mt-4">
+            <a class="nav-link text-danger" href="{% url 'user_logout' %}">
+              <i class="ni ni-user-run text-danger"></i>
+              <span class="nav-link-text">Logout</span>
+            </a>
+          </li>            
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
